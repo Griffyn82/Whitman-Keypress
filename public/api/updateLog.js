@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const uri = 'mongodb+srv://gdavidson1982:GreatPilot25@whitman-keypress.qrrig.mongodb.net/?retryWrites=true&w=majority&appName=Whitman-Keypress';
+const uri = process.env.MONGODB_URI;  // Use environment variable instead of hardcoded URI
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 export default async function handler(req, res) {
