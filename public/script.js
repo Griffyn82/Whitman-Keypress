@@ -62,25 +62,32 @@ if (keyGrid) {
 function handleBoxClick(box) {
   const boxId = box.dataset.boxId;
   const currentDate = new Date().toLocaleDateString(); // Get current date
+  const currentTime = new Date().toLocaleTimeString(); // Get current time
+
+  const name = prompt("Enter the name of the person signing out the key:");
+  const securityOfficerInitials = prompt("Enter the security officer's initials:");
 
   if (box.classList.contains('red')) {
     // Mark the box as green if it was previously red
     box.classList.remove('red');
     box.classList.add('green');
-    logAction('checked in', boxId, currentDate);
+    logAction('checked in', boxId, currentDate, currentTime, name, securityOfficerInitials);
   } else {
     // Mark the box as red and log checkout
     box.classList.remove('green');
     box.classList.add('red');
-    logAction('checked out', boxId, currentDate);
+    logAction('checked out', boxId, currentDate, currentTime, name, securityOfficerInitials);
   }
 }
 
-function logAction(action, boxId, currentDate) {
+function logAction(action, boxId, date, time, name, securityOfficerInitials) {
   logData.push({
     action: action,
     boxId: boxId,
-    date: currentDate
+    date: date,
+    time: time,
+    name: name,
+    securityOfficerInitials: securityOfficerInitials
   });
   localStorage.setItem('logData', JSON.stringify(logData));
 }
@@ -95,10 +102,10 @@ function displayLog() {
       row.innerHTML = `
         <td>${entry.boxId}</td>
         <td>${entry.action}</td>
-        <td>${entry.nameCheckedOut || entry.nameReturned}</td>
-        <td>${entry.timeCheckedOut || entry.timeReturned}</td>
+        <td>${entry.name}</td>
+        <td>${entry.time}</td>
         <td>${entry.date}</td>
-        <td>${entry.securityOfficerInitialsOut || entry.securityOfficerInitialsIn}</td>
+        <td>${entry.securityOfficerInitials}</td>
       `;
       logTableBody.appendChild(row);
     });
