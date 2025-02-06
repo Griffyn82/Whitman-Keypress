@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Key Log</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Key Log</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Key Number</th>
+          <th>Action</th>
+          <th>Name</th>
+          <th>Time</th>
+          <th>Date</th>
+          <th>Security Officer Initials</th>
+        </tr>
+      </thead>
+      <tbody id="logTableBody">
+        <!-- Log data will be inserted here -->
+      </tbody>
+    </table>
+    <button class="button" onclick="window.location.href='keypress1.html'">Back to KeyPress 1</button>
+    <button class="button" onclick="clearLog()">Clear Log</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
